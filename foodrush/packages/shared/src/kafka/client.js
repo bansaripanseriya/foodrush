@@ -1,5 +1,4 @@
-const kafka = require('kafka-node');
-const { kafkaClient } = require('./topics');
+const { kafka, logLevel } = require('kafkajs')
 
 class KafkaClient {
     // constructor to initialize the Kafka client
@@ -33,14 +32,14 @@ class KafkaClient {
         const consumer = this.kafka.consumer({
             groupId,
             autoCommit : true,
-            fetchMaxWaitMs : 1000,
-            fetchMaxBytes : 1024 * 1024,
+            sessionTimeout : 10000,
+            heartbeatInterval : 3000
         });
 
         await consumer.connect();
         console.log(`Consumer connected to topic ${topic} in group ${groupId}`);
         return consumer;
-    }
+    }s
 
 }
 
