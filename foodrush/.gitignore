@@ -1,0 +1,109 @@
+# ─────────────────────────────────────────
+#  FoodRush — .gitignore
+# ─────────────────────────────────────────
+
+# ── Node.js ──────────────────────────────
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+.pnpm-store/
+.npm/
+package-lock.json
+yarn.lock
+
+# ── Environment variables ─────────────────
+# NEVER commit secrets
+.env
+.env.*
+!.env.example
+*.local
+
+# ── Build outputs ─────────────────────────
+dist/
+build/
+out/
+.cache/
+.turbo/
+coverage/
+*.tsbuildinfo
+
+# ── Logs ──────────────────────────────────
+logs/
+*.log
+*.log.*
+pids/
+*.pid
+*.seed
+*.pid.lock
+
+# ── Docker ────────────────────────────────
+# Keep docker-compose files, ignore local overrides
+docker-compose.override.yml
+
+# ── Database ──────────────────────────────
+# Never commit data volumes or migration lock files
+*.sql.bak
+*.dump
+pgdata/
+data/
+
+# ── Elasticsearch ─────────────────────────
+esdata/
+elasticsearch/data/
+
+# ── Kafka / Zookeeper ─────────────────────
+kafka-data/
+zookeeper-data/
+kafka-logs/
+
+# ── Redis ─────────────────────────────────
+redis-data/
+dump.rdb
+appendonly.aof
+
+# ── Testing ───────────────────────────────
+coverage/
+.nyc_output/
+test-results/
+junit.xml
+
+# ── IDE / Editor ──────────────────────────
+.idea/
+.vscode/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+.history/
+
+# ── OS generated ──────────────────────────
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# ── Certificates / Keys ───────────────────
+*.pem
+*.key
+*.crt
+*.p12
+*.pfx
+ssl/
+certs/
+
+# ── Monitoring data ───────────────────────
+prometheus/data/
+grafana/data/
+
+# ── Miscellaneous ─────────────────────────
+.eslintcache
+.stylelintcache
+*.tgz
+*.tar.gz
