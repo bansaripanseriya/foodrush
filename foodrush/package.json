@@ -1,0 +1,34 @@
+{
+  "name": "foodrush",
+  "version": "1.0.0",
+  "description": "This is food delivery project. Purpose of this project is to learn distributed system with kafka, elastic search and node and docker.",
+  "keywords": [
+    "foodrush"
+  ],
+  "homepage": "https://github.com/bansaripanseriya/foodrush#readme",
+  "bugs": {
+    "url": "https://github.com/bansaripanseriya/foodrush/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bansaripanseriya/foodrush.git"
+  },
+  "license": "ISC",
+  "author": "Bansari Panseriya",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "test": "npm run test --workspaces"
+  },
+  "workspaces": [
+    "services/*",
+    "packages/*",
+    "services/api-gateway",
+    "services/user-service",
+    "services/restaurant-service",
+    "services/order-service",
+    "services/delivery-service",
+    "services/notification-service",
+    "packages/shared"
+  ]
+}
