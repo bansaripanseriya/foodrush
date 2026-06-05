@@ -401,3 +401,31 @@ Please write tests for new features and make sure `npm test` passes before openi
 ## License
 
 MIT — build anything you want with this.
+
+## Typical Order Flow
+
+Customer Places Order
+        │
+        ▼
+API Gateway
+        │
+        ▼
+Order Service
+        │
+        ├── Save Order → PostgreSQL
+        │
+        ├── Cache → Redis
+        │
+        └── Publish Event → Kafka
+                                │
+               ┌────────────────┴──────────────┐
+               ▼                               ▼
+      Delivery Service            Notification Service
+               │                               │
+               ▼                               ▼
+      Assign Driver                 Send Email/SMS
+
+Restaurant Service
+       │
+       ▼
+Index Search Data → Elasticsearch
