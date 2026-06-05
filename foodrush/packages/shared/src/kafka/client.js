@@ -1,6 +1,7 @@
 const kafka = require('kafka-node');
+const { kafkaClient } = require('./topics');
 
-class kafkaConsumer {
+class KafkaClient {
     // constructor to initialize the Kafka client
     construcor(clientId, brokers) {
         this.kafka = new kafka({
@@ -14,30 +15,33 @@ class kafkaConsumer {
             },
         });
     }
+
+    async createProducer(topic) {
+        // create a producer for the given topic
+        const producer = this.kafka.producer({
+            allowAutoTopicCreation : true,
+            transactionTimeout : 10000,
+        });
+
+        await producer.connect();
+        console.log(`Producer connected to topic ${topic}`);
+        return producer;
+    }   
+
+    async createConsumer(groupId) {
+        // create a consumer for the given groupId
+        const consumer = this.kafka.consumer({
+            groupId,
+            autoCommit : true,
+            fetchMaxWaitMs : 1000,
+            fetchMaxBytes : 1024 * 1024,
+        });
+
+        await consumer.connect();
+        console.log(`Consumer connected to topic ${topic} in group ${groupId}`);
+        return consumer;
+    }
+
 }
 
-async function createProducer(topic) {
-    // create a producer for the given topic
-    const producer = this.kafka.producer({
-        allowAutoTopicCreation : true,
-        transactionTimeout : 10000,
-    });
-
-    await producer.connect();
-    console.log(`Producer connected to topic ${topic}`);
-    return producer;
-}   
-
-async function createConsumer(groupId) {
-    // create a consumer for the given groupId
-    const consumer = this.kafka.consumer({
-        groupId,
-        autoCommit : true,
-        fetchMaxWaitMs : 1000,
-        fetchMaxBytes : 1024 * 1024,
-    });
-
-    await consumer.connect();
-    console.log(`Consumer connected to topic ${topic} in group ${groupId}`);
-    return consumer;
-}
+module.exports = { kafkaClient };
