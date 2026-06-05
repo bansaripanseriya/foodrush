@@ -9,6 +9,7 @@ const TOPICS = {
     PAYMENT_PROCESSED : 'payment.processed',
     RESTAURANT_INDEXED : 'restaurant.indexed',
     NOTIFICATION_SEND : 'notification.send',
+    USER_REGISTERED : 'user.registered',
 };
 
 module.exports = {kafkaClient, TOPICS};
